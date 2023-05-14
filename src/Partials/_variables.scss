@@ -1,0 +1,70 @@
+//font
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600&display=swap');
+$font:'Quicksand', sans-serif;
+
+//neutri
+$black:#0B0A0B;
+$blackTransp:#0b0a0b96;
+$grey_light:#DCDCDC;
+$grey_dark:#c2c2c2;
+$grey_darkTransp:#c2c2c29f;
+$grey_darkest:#727272;
+$white:#f6f4f5;
+
+//viola palette
+
+$pink_transparent:#9933668b;
+$pink_light:#B3668C;
+$pink_dark:#993366;
+
+//women
+$f_017:#EEA8FF;
+$f_1834:#D27DD6;
+$f_3549:#B459B9;
+$f_5064:#9B389E;
+$f_65:#68326A;
+
+//men
+$m_017:#ACA6EB;
+$m_1834:#7D75D4;
+$m_3549:#6a62bf;
+$m_5064:#281f89;
+$m_65:#0e084f;
+$m_tot:#3020dd;
+//total
+$totals:#6FBA68;
+$unk:#727272;
+
+//measuraments main
+$padding_X: 0px 50px;
+$padding_menu_items: 0px 2px;
+//transitions
+$transition: 0.5s ease-in-out  ;
+
+//flex 
+
+@mixin flex($just,$dir) {
+    display: flex;
+    align-items: center;
+    justify-content: $just;
+    flex-direction: $dir;
+}
+//stile default
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: $white;
+    font-family: $font;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+//font-size
+$menu_25:25px;
+$sm_20:20px;
+$font_light_300:300;

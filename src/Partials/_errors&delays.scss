@@ -1,0 +1,78 @@
+.loading-wheel_container {
+    width: 100%;
+    background: $blackTransp;
+    height: 91vh;
+    @include flex(center, row);
+    &_sm {
+      height: 87%;
+    }
+    .loading-wheel {
+        width: 150px;
+        height: 150px;
+        position: fixed;
+        @include flex(center,center);
+        &::after {
+            content: "";
+            width: 75px;
+            height: 75px;
+            border: 15px solid $white;
+            border-top-color: $pink_dark;
+            border-radius: 50%;
+            animation: loading 0.75s ease infinite;
+          }
+    }
+}
+
+@keyframes loading {
+    from {
+      transform: rotate(0turn);
+    }
+    to {
+      transform: rotate(1turn);
+    }
+}
+
+//pagina 404 
+
+.error-main {
+  background: white;
+  justify-content: center;
+  text-align: center;
+  h1 {
+    font-size: 50px;
+    color: $pink_dark;
+  }
+  p{
+    color: $pink_dark;
+    font-size: $menu_25;
+  }
+}
+
+//no data
+
+.error-main_none{
+  height: 60vh;
+  background: $white;
+  .error-container {
+      height: 150px;
+      @include flex(space-between,column);
+      .line-container {
+          width: 80%;
+          height: 10px;
+          border-radius: 30px;
+          background: $pink_light;
+          overflow: hidden;
+          transition: .3s ease width;
+          .line {
+              background: $pink_dark;
+              height: 100%;        
+              border-radius: 30px;        
+          }
+      }
+      h2 {
+          color: $pink_dark;
+          font-size: 35px;
+          line-height: 60px;
+      }
+  }
+}

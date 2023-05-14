@@ -1,0 +1,461 @@
+@import "./Partials/variables";
+@import "./Partials/errors&delays";
+
+.navbar {
+    height: 84px;
+    width: 100%;
+    background: $black;
+    padding: $padding_X;
+    @include flex(space-between, row);
+    img {
+        height: 51px;
+        width: 165px;
+        object-fit: cover;
+    }
+}
+
+main {
+    padding: $padding_X;
+    width: 100%;
+    height: 91vh;
+    @include flex(space-between, row);
+    padding-top: 26px;
+    .column-1 {
+        width: 407px;
+        height: 100%;
+        text-align: center;
+    }
+    .column-2 {
+        flex: 1;
+        height: 100%;
+    }
+}
+
+//stile condiviso inizi
+
+.icon-container{
+    height: 52px;
+    width: 52px;
+    cursor: pointer;
+    @include flex(center,row);
+    .icon-container_icon{
+        font-size: 30px;
+        transform: rotate(0deg);
+        transition: $transition;
+        transition-property: transform;
+        &_active {
+            transform:rotate(-180deg);
+        }
+    }
+}
+
+.display {
+    width: 100%;
+    background: $pink_dark;
+    height: 52px;
+    @include flex(space-between,row);
+    padding: $padding_menu_items;      
+}
+
+//stile condiviso fine
+
+.menu-container {
+  width: 339px;
+  min-height: 52px;
+  background: $grey_dark;
+  border: 2px solid $pink_dark;   
+  color: $white;
+  h2 {
+    font-size: $menu_25;
+    font-weight: $font_light_300;
+    text-align: start;
+   }
+  .list-container {  
+     opacity: 0;
+     height: 0px;
+     transition: $transition;
+     transition-property: opacity, height, border ;
+     &_open {   
+       border-top: 5px solid $white;
+       height: 300px;
+       opacity: 1;
+     }
+     .list-item{    
+        padding: $padding_menu_items;  
+        height: 46px;
+        background-color: $pink_light;
+        line-height:  46px;
+        cursor: pointer;
+        width: 100%;
+        &_active {
+            background-color: $pink_dark;
+        }
+
+     }
+  }
+}
+
+.date-navigation_container{
+ width: 100%;
+ height: 50px;
+ @include flex(flex-end, row);
+ align-items: start;
+ .date-container{
+    @include flex(space-between, row);
+    width: 450px;
+    .date {
+        width: 70%;
+        border-bottom: 2px solid $pink_dark;
+        text-align: center;
+        h3 {
+            font-size: $menu_25;
+            font-weight: $font_light_300;
+            color: $pink_dark;
+        }    
+    }
+    .btn-container{
+        height: 41px;
+        width: 41px;
+        @include flex(center, row);
+        border:4px solid $pink_dark;
+        color: $pink_dark;
+        font-size: 40px;
+        cursor: pointer;
+        &_deactivated {
+            opacity: 0.3;
+            cursor: default;
+        }
+    }
+ }
+}
+
+.graph-main_container{
+    height: 589px;
+    @include flex(flex-end,row);
+    align-items: flex-start;
+    position: relative;
+    .quantity-container {
+       position: absolute;
+       right: 0;
+       height: 549px;
+       width: 98%;
+       @include flex(space-between,column);
+       align-items: end;
+       bottom: 40px;
+       .level-container {
+          position: relative;
+          width: 100%;
+          z-index: 10;
+          pointer-events: none;
+          text-align: start;
+             .line {
+                 height: 1px;
+                 width: 100%;
+                 background: $pink_dark;
+             }
+              h3 {
+                 font-size: $sm_20;
+                 color: $pink_dark;
+                 text-align: start;
+                 width: 60px;
+            }
+       }
+
+    }
+    .graph-container{
+        width: 1335px;
+        height: 524px;
+        background-color: $white ;
+        border-left: 3px solid $pink_dark;
+        border-bottom: 3px solid $pink_dark;
+        @include flex(flex-start,row);
+        .daily-data_container{
+            position: relative;
+            width: calc(1335px/7);
+            height: 100%;
+            background: $grey_light ;
+            transition: $transition ;
+            transition-property: background;
+            @include flex(space-around,row);
+            align-items: end;
+            .labels_container {
+                position: absolute;
+                width:calc(1335px/7) ;
+                @include flex(space-around,row);
+                bottom: -40px;
+                border-right: 1px solid $pink_dark;
+                height: 40px;
+                color: $black;
+                z-index: 10;
+            }
+           .daily-data_col_tot {
+            width: 20px;
+            z-index: 13;
+            position: relative;
+           }
+            .daily-data_col{
+                width: 20px;
+                position: relative;
+                h3 {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                    font-size: 13px;
+                    color: $white;
+                }
+                .column-label {
+                   opacity: 0;
+                   width: 100px;
+                   background: $blackTransp;
+                   position: absolute;
+                   left: 20px;
+                   border-radius: 5px;
+                   height: 60px;
+                   color: $white;
+                   top: -2%;
+                   transition: $transition;
+                   transition-property:opacity ;
+                   text-align: start;
+                   padding: 0px 3px;
+                   z-index: 100;
+                    .demogrs {
+                       font-weight: $font_light_300;
+                       font-size: 14px;
+                       margin: 5px 0px;
+                    }
+                    .bottom {
+                        @include flex(start,center);
+                        width: 100%;
+                         .clr-sm {
+                         width: 13px;
+                         height: 13px;
+                         margin-right: 5px;
+                         border: 1px solid white;
+                   }
+                   h1 {
+                    font-size:$menu_25 ;
+                   }
+                 }
+
+                }
+                &:hover .column-label{
+                   opacity: 1;
+                   z-index:100;
+                }
+            }
+            &:nth-child(odd) {
+                background: $grey_dark;
+            }
+            &:hover{
+               background: $pink_transparent;
+            }
+            .dates-sm_container{
+                position: absolute;
+                bottom: -60px;
+                width: 100%;
+                text-align: center;
+                .date {
+                   font-size: $sm_20;
+                   font-weight:$font_light_300;
+                   color: $blackTransp;
+                }
+            }
+        }        
+    }
+}
+
+.demographics-container{
+    margin-top: 10px;
+    width: 100%;
+    height: 70px;
+    display: grid;
+    grid-template-columns: 803px;
+    grid-template-rows: repeat(2, 31px);
+    grid-row-gap: 10px;
+    justify-content: center;
+    .demographics-container_fmlml {
+        width: 803px;
+        @include flex(center,row);
+        .age-container {
+          height: 31px;
+          width: 109px;
+          margin: 0px 5px;
+          text-align: center;
+          h2{
+            font-size: $menu_25;
+            color: $white;
+            font-weight: 500;
+          }        
+          &_unk {
+          background: $unk;
+           }
+          &_tot {
+            background: $totals;
+           }
+        }    
+     }
+}   
+
+main.hourly-traffic_page {
+    align-items: start;
+    .column-1 {
+        height: 659px;
+        .menu-container_realtime {
+            width:339px;
+            background: $grey_dark;
+            border: 2px solid $pink_dark;
+            height: 397px;
+            margin-top:30px;
+            color: $white;
+            h2 {
+                font-size: $menu_25;
+                font-weight: $font_light_300;
+                text-align: start;
+            }
+            .realtime-container {
+                @include flex(space-between,column);
+                .realtime-item {
+                    @include flex(space-between,row);
+                    margin-top: 4px;
+                    width: 100%;
+                    height: 30px;
+                    background: $grey_darkest;
+                    padding: $padding_menu_items;
+                    h2 {
+                      color: $white;
+                      font-size: 24px;
+                      font-weight: $font_light_300;  
+                    }
+                    .color-cont{
+                        height: 25px;
+                        width: 40px;
+                        &_men {
+                            background-color: $m_tot;
+                        }
+                        &_women {
+                            background-color: $pink_dark;
+                        }
+                    }
+                }
+            }
+        }
+        .menu-container_page2 {
+         height:290px;
+         background: $pink_light;
+         .gender-menu{
+             padding-top: 5px;
+             .gender-section {                
+                 width: 100%;
+                 align-items: start;
+                 display: grid;
+                 grid-template-columns: 69px repeat(3, 85px);
+                 column-gap: 3px;
+                 grid-template-rows: repeat(2,37px);
+                 margin: 8px 0px;
+                 &:nth-child(3) {
+                    background: $grey_darkTransp; 
+                    height: 35px;
+                 }
+                 .gender-icon_container {
+                     width: 67px;
+                     height: 72px;            
+                     grid-row: 1 / span 2;
+                     @include flex(center,row);
+                     &_male {
+                         background: $m_tot;
+                     }
+                     &_fem {
+                        
+                         background: $pink_dark;
+                     }
+                     img {
+                         width: 68px;
+                         height: 68px;
+                         object-fit: cover;
+                     }
+                     &_unk {
+                         background: $unk;
+                         grid-row: 1 / span 1;
+                         height: 35px;
+                         img {
+                             width: 30px;
+                             height: 35px;
+                             object-fit: cover;
+                         }
+                     }
+                 }
+                 .demographics-pill{
+                    height: 35px;
+                    width: 85px;
+                    background: $grey_dark;
+                    @include flex(center,row);
+                    cursor: pointer;
+                    &_totMen{
+                        background: $m_tot;
+                    }
+                    &_bbB{
+                        background: $m_017;
+                    }
+                    &_boys{
+                        background: $m_1834;
+                    }
+                    &_men{
+                        background: $m_3549;
+                    }
+                    &_oldMen{
+                        background: $m_5064;
+                    }
+                    &_veryOldMen{
+                        background: $m_65;
+                    }
+                    &_totWomen{
+                          background: $pink_dark;  
+                    }
+                    &_bbG{
+                          background: $f_017;  
+                    }
+                    &_girls{
+                          background: $f_1834;  
+                    }
+                    &_women{
+                          background: $f_3549;  
+                    }
+                    &_oldWomen{
+                          background: $f_5064;  
+                    }
+                    &_veryOldWomen{
+                          background: $f_65;  
+                    }
+                    &_unk{
+                        background: $unk;
+                    }
+                 }
+             }
+         }
+     }
+    }
+    .column-2 {
+        .date-navigation_container{
+            .date-container {
+                  .btn-container {
+                    opacity: 0;
+                    cursor: default
+                  }
+                .display {  
+                    @include flex(center, row);          
+                      h2 {
+                       font-size: 30px;
+                       font-weight: $font_light_300;
+                       color: $white;
+                    }
+                }
+            }
+        }
+        .graph-two_cont {
+            margin-left: 60px;
+            @include flex(center,row);
+        }
+    }
+}
+
